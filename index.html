@@ -302,25 +302,17 @@
     z-index: 50;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 18px var(--gutter);
-  }
-  .nav__mark {
-    height: 125px;
-    width: 125px;
-    object-fit: contain;
-    object-position: left center;
-    display: block;
-    filter: drop-shadow(0 2px 12px rgba(0,0,0,0.7));
   }
   .nav__year {
     font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.22em;
+    font-size: 14px;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
     color: var(--infame-white);
-    border: 1px solid var(--infame-smoke);
-    padding: 5px 10px;
+    border: 1px solid var(--infame-white);
+    padding: 8px 14px;
   }
 
   /* ============================================================
@@ -328,8 +320,7 @@
      ============================================================ */
   .hero {
     position: relative;
-    min-height: 100svh;
-    min-height: 100vh;
+    min-height: 78svh;
     width: 100%;
     overflow: hidden;
     display: flex;
@@ -337,8 +328,20 @@
     isolation: isolate;
     background: var(--infame-red);
     color: var(--infame-white);
+    padding-top: 140px;
   }
   .hero__bg { display: none; }
+  .hero__logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -58%);
+    width: min(72vw, 360px);
+    height: auto;
+    z-index: 1;
+    filter: drop-shadow(0 6px 24px rgba(0,0,0,0.25));
+    pointer-events: none;
+  }
 
   .hero__content {
     position: relative;
@@ -938,7 +941,8 @@
      ============================================================ */
   @media (min-width: 720px) {
     :root { --gutter: 48px; }
-    .nav__mark { height: 150px; width: 150px; }
+    .nav__year { font-size: 16px; padding: 10px 18px; }
+    .hero__logo { width: min(40vw, 460px); }
     .hero__content { padding-bottom: 64px; }
     .slab { padding: 140px var(--gutter); }
     .closing { padding: 140px var(--gutter) 60px; }
@@ -970,14 +974,12 @@
      HERO
 ============================================================ -->
 <nav class="nav" aria-label="Topo">
-  <img class="nav__mark" src="assets/logo/logo-white.png" alt="INFAME">
   <div class="nav__year">30 · 05</div>
 </nav>
 
 <header class="hero" data-screen-label="01 Hero">
-  <div class="hero__bg">
-    <img src="assets/img/fire-mark-vert.png" alt="" loading="eager" fetchpriority="high">
-  </div>
+  <div class="hero__bg" aria-hidden="true"></div>
+  <img class="hero__logo" src="assets/logo/logo-white.png" alt="INFAME" loading="eager" fetchpriority="high">
 
   <div class="hero__content">
     <div class="hero__eyebrow">
