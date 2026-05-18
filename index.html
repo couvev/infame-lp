@@ -28,7 +28,6 @@
 <meta name="twitter:image" content="https://couvev.github.io/infame-lp/assets/img/og-preview.jpg">
 
 <link rel="preload" href="fonts/Justone.otf" as="font" type="font/otf" crossorigin>
-<link rel="preload" as="image" href="assets/img/fire-mark-vert.png">
 
 <style>
   /* ============================================================
@@ -40,6 +39,16 @@
     font-family: "Justone";
     src: url("fonts/Justone.otf") format("opentype"),
          url("fonts/Justone.ttf") format("truetype");
+    font-weight: 400 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  /* Justone only for ≠ — keeps logo glyph in any font stack */
+  @font-face {
+    font-family: "JustoneSymbol";
+    src: url("fonts/Justone.otf") format("opentype"),
+         url("fonts/Justone.ttf") format("truetype");
+    unicode-range: U+2260;
     font-weight: 400 900;
     font-style: normal;
     font-display: swap;
@@ -59,9 +68,9 @@
     --fg-dim:           #B3B0AC;
     --fg-mute:          #6B6B73;
 
-    --font-display: "Justone", "Archivo Black", Impact, sans-serif;
-    --font-ui:      "Archivo", "Helvetica Neue", Arial, sans-serif;
-    --font-mono:    "JetBrains Mono", ui-monospace, monospace;
+    --font-display: "Justone", "JustoneSymbol", "Archivo Black", Impact, sans-serif;
+    --font-ui:      "JustoneSymbol", "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --font-mono:    "JustoneSymbol", "JetBrains Mono", ui-monospace, monospace;
 
     --shadow-glow-red: 0 0 24px rgba(255,21,21,0.55), 0 0 64px rgba(255,21,21,0.25);
     --shadow-led:      0 0 8px rgba(255,21,21,0.9), 0 0 22px rgba(255,21,21,0.55);
@@ -326,36 +335,10 @@
     display: flex;
     align-items: flex-end;
     isolation: isolate;
+    background: var(--infame-red);
+    color: var(--infame-white);
   }
-  .hero__bg {
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-    background: #000;
-  }
-  .hero__bg img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 38%;
-    opacity: 0.95;
-    animation: hero-breath 9s ease-in-out infinite;
-  }
-  @keyframes hero-breath {
-    0%, 100% { transform: scale(1.02); }
-    50%      { transform: scale(1.08); }
-  }
-  .hero__bg::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse at 50% 30%, transparent 0%, rgba(0,0,0,0.55) 70%, #000 100%),
-      linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 28%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.9) 88%, #000 100%);
-    z-index: 1;
-  }
+  .hero__bg { display: none; }
 
   .hero__content {
     position: relative;
@@ -374,13 +357,13 @@
     font-size: 11px;
     letter-spacing: 0.32em;
     text-transform: uppercase;
-    color: var(--fg-dim);
+    color: var(--infame-white);
     margin-bottom: 18px;
   }
   .hero__eyebrow .pulse {
     width: 8px; height: 8px;
-    background: var(--infame-red);
-    box-shadow: var(--shadow-led);
+    background: var(--infame-black);
+    box-shadow: 0 0 8px rgba(0,0,0,0.6);
     animation: pulse 1.6s ease-in-out infinite;
   }
   @keyframes pulse {
@@ -398,14 +381,14 @@
     margin: 0;
     color: var(--infame-white);
   }
-  .hero__title .red { color: var(--infame-red); }
+  .hero__title .red { color: var(--infame-black); }
   .hero__title .years {
     display: block;
     font-size: 0.45em;
     letter-spacing: 0.04em;
     line-height: 1;
     margin-top: 6px;
-    color: var(--fg-dim);
+    color: rgba(255,255,255,0.7);
   }
 
   .hero__sub {
@@ -420,7 +403,7 @@
     flex-wrap: wrap;
     align-items: center;
   }
-  .hero__sub .sep { color: var(--infame-red); }
+  .hero__sub .sep { color: var(--infame-black); }
 
   /* ============================================================
      CTA BUTTONS
@@ -477,13 +460,25 @@
     flex-direction: column;
     gap: 8px;
   }
+  .hero__cta-row .btn {
+    background: var(--infame-black);
+    color: var(--infame-white);
+  }
+  .hero__cta-row .btn:hover,
+  .hero__cta-row .btn:focus-visible {
+    background: var(--infame-off-black);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.45);
+  }
+  .hero__cta-row .btn:active {
+    background: #000;
+  }
   .hero__cta-foot {
     margin-top: 12px;
     font-family: var(--font-mono);
     font-size: 10px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--fg-mute);
+    color: rgba(0,0,0,0.7);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -502,7 +497,7 @@
     font-size: 9px;
     letter-spacing: 0.32em;
     text-transform: uppercase;
-    color: var(--fg-mute);
+    color: rgba(0,0,0,0.6);
     text-align: center;
     pointer-events: none;
     display: none;
