@@ -307,12 +307,12 @@
   }
   .nav__year {
     font-family: var(--font-mono);
-    font-size: 14px;
-    letter-spacing: 0.28em;
+    font-size: 16px;
+    letter-spacing: 0.26em;
     text-transform: uppercase;
     color: var(--infame-white);
-    border: 1px solid var(--infame-white);
-    padding: 8px 14px;
+    border: 1.5px solid var(--infame-white);
+    padding: 9px 16px;
   }
 
   /* ============================================================
@@ -320,26 +320,24 @@
      ============================================================ */
   .hero {
     position: relative;
-    min-height: 78svh;
+    min-height: 82svh;
     width: 100%;
     overflow: hidden;
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
     isolation: isolate;
     background: var(--infame-red);
     color: var(--infame-white);
-    padding-top: 140px;
+    padding-top: 130px;
   }
   .hero__bg { display: none; }
   .hero__logo {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -58%);
-    width: min(72vw, 360px);
+    display: block;
+    width: min(82vw, 440px);
     height: auto;
-    z-index: 1;
-    filter: drop-shadow(0 6px 24px rgba(0,0,0,0.25));
+    margin: auto;
+    padding: 12px 0 28px;
+    filter: drop-shadow(0 6px 24px rgba(0,0,0,0.22));
     pointer-events: none;
   }
 
@@ -941,8 +939,8 @@
      ============================================================ */
   @media (min-width: 720px) {
     :root { --gutter: 48px; }
-    .nav__year { font-size: 16px; padding: 10px 18px; }
-    .hero__logo { width: min(40vw, 460px); }
+    .nav__year { font-size: 18px; padding: 11px 20px; }
+    .hero__logo { width: min(48vw, 560px); padding: 24px 0 40px; }
     .hero__content { padding-bottom: 64px; }
     .slab { padding: 140px var(--gutter); }
     .closing { padding: 140px var(--gutter) 60px; }
@@ -974,12 +972,12 @@
      HERO
 ============================================================ -->
 <nav class="nav" aria-label="Topo">
-  <div class="nav__year">30 · 05</div>
+  <div class="nav__year">30 · 05 · 2026</div>
 </nav>
 
 <header class="hero" data-screen-label="01 Hero">
   <div class="hero__bg" aria-hidden="true"></div>
-  <img class="hero__logo" src="assets/logo/logo-white.png" alt="INFAME" loading="eager" fetchpriority="high">
+  <img class="hero__logo" src="assets/logo/logo-white-trim.png" alt="INFAME" loading="eager" fetchpriority="high">
 
   <div class="hero__content">
     <div class="hero__eyebrow">
