@@ -594,6 +594,25 @@
   }
   .slab-red .display .blk { color: var(--infame-black); }
   .slab-red .display .dim-w { opacity: 0.6; }
+
+  /* ============================================================
+     NEQ — ≠ rendered as image (extracted from logo)
+     ============================================================ */
+  .neq-img {
+    display: inline-block;
+    height: 0.85em;
+    width: auto;
+    vertical-align: -0.12em;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+  .neq-img--display { height: 0.82em; vertical-align: -0.06em; }
+  .neq-img--mono    { height: 0.95em; vertical-align: -0.2em; }
+  .neq-img--dim     { opacity: 0.6; }
+  .display .neq-img { animation: flicker 6s steps(1) infinite; }
+  @media (prefers-reduced-motion: reduce) {
+    .display .neq-img { animation: none; }
+  }
   .slab-red__tag {
     font-family: var(--font-mono);
     font-size: 10px;
@@ -958,11 +977,11 @@
 <div class="ticker" aria-hidden="true">
   <div class="ticker__track" id="ticker">
     <!-- script duplicates content for seamless loop -->
-    <span class="ticker__item"><span class="dot"></span>INFA≠ME · 6 ANOS</span>
+    <span class="ticker__item"><span class="dot"></span>INFA<img class="neq-img neq-img--mono" src="assets/img/neq/neq-red.png" alt="≠">ME · 6 ANOS</span>
     <span class="ticker__item">NÃO EXISTE REPLAY</span>
     <span class="ticker__item"><span class="dot"></span>FUCK SOCIAL MEDIA</span>
     <span class="ticker__item">I'M DOPE IN REAL LIFE</span>
-    <span class="ticker__item"><span class="dot"></span>≠ NO COMEBACKS</span>
+    <span class="ticker__item"><span class="dot"></span><img class="neq-img neq-img--mono" src="assets/img/neq/neq-red.png" alt="≠"> NO COMEBACKS</span>
     <span class="ticker__item">A VIDA NÃO ESPERA</span>
     <span class="ticker__item"><span class="dot"></span>GARANTIR LUGAR →</span>
   </div>
@@ -982,12 +1001,12 @@
   <div class="hero__content">
     <div class="hero__eyebrow">
       <span class="pulse"></span>
-      <span>≠ A VIDA NÃO ESPERA</span>
+      <span><img class="neq-img neq-img--mono" src="assets/img/neq/neq-black.png" alt="≠"> A VIDA NÃO ESPERA</span>
     </div>
 
     <h1 class="hero__title">
-      6<span class="red">≠</span>ANOS
-      <span class="years">DE INFA≠ME</span>
+      6<img class="neq-img neq-img--display" src="assets/img/neq/neq-black.png" alt="≠">ANOS
+      <span class="years">DE INFA<img class="neq-img neq-img--display" src="assets/img/neq/neq-white.png" alt="≠" style="opacity:0.7">ME</span>
     </h1>
 
     <div class="hero__sub">
@@ -1005,8 +1024,6 @@
       </a>
       <div class="hero__cta-foot">
         <span>INGRESSOS · SYMPLA</span>
-        <span>·</span>
-        <span>LOTE ATUAL</span>
       </div>
     </div>
   </div>
@@ -1053,7 +1070,7 @@
   <h2 class="display reveal video-cta__quote">
     VOCÊ VAI<br>
     QUERER<br>
-    <span class="red">VIVER ISSO <span class="neq">≠</span></span>
+    <span class="red">VIVER ISSO <img class="neq-img neq-img--display" src="assets/img/neq/neq-red.png" alt="≠"></span>
   </h2>
   <p class="video-cta__sub reveal">INFAME · 30 DE MAIO · BRASÍLIA 2026</p>
   <div class="video-cta__btn reveal">
@@ -1063,8 +1080,6 @@
     </a>
     <div class="hero__cta-foot" style="margin-top: 12px;">
       <span>INGRESSOS · SYMPLA</span>
-      <span>·</span>
-      <span>LOTE ATUAL</span>
     </div>
   </div>
 </section>
@@ -1078,7 +1093,7 @@
     NÃO<br>
     EXISTE<br>
     <span class="dim">REPLAY</span><br>
-    <span class="neq">≠</span>
+    <img class="neq-img neq-img--display" src="assets/img/neq/neq-red.png" alt="≠">
   </h2>
 </section>
 
@@ -1105,7 +1120,7 @@
     <span class="dim">E EDITA…</span><br>
     <br>
     A INFAME<br>
-    <span class="red">≠ ACONTECE.</span>
+    <span class="red"><img class="neq-img neq-img--display" src="assets/img/neq/neq-red.png" alt="≠"> ACONTECE.</span>
   </h2>
 </section>
 
@@ -1119,7 +1134,7 @@
       FUCK<br>
       SOCIAL<br>
       MEDIA<br>
-      <span class="blk">≠</span><br>
+      <img class="neq-img neq-img--display" src="assets/img/neq/neq-black.png" alt="≠"><br>
       I'M DOPE<br>
       <span class="dim-w">IN REAL LIFE.</span>
     </h2>
@@ -1132,7 +1147,7 @@
 <section class="led-strip" data-screen-label="08 LED · No comebacks">
   <div class="led-strip__inner">
     <div class="led-block reveal">
-      <p class="led-text">≠ NO COMEBACKS</p>
+      <p class="led-text"><img class="neq-img neq-img--display" src="assets/img/neq/neq-red.png" alt="≠"> NO COMEBACKS</p>
       <p class="led-text" style="opacity:0.75; font-size: clamp(28px, 9vw, 64px);">NO REGRETS.</p>
     </div>
   </div>
@@ -1162,7 +1177,7 @@
     SÃO 6 ANOS<br>
     <span class="dim">DE MOMENTOS</span><br>
     <span class="dim">ÚNICOS</span><br>
-    <span class="red">≠</span> E HISTÓRIAS<br>
+    <img class="neq-img neq-img--display" src="assets/img/neq/neq-red.png" alt="≠"> E HISTÓRIAS<br>
     PRA CONTAR.
   </p>
 </section>
@@ -1186,7 +1201,7 @@
     "If you miss it,<br>
     <span style="color: var(--infame-red); font-style: normal; font-family: var(--font-display); font-size: 1.35em; letter-spacing: 0;">YOU MISSED IT.</span>"
   </p>
-  <div class="closing__sub reveal">≠ INFAME · 6 ANOS · BRASÍLIA 2026</div>
+  <div class="closing__sub reveal"><img class="neq-img neq-img--mono" src="assets/img/neq/neq-red.png" alt="≠"> INFAME · 6 ANOS · BRASÍLIA 2026</div>
 
   <div class="closing__cta reveal">
     <a class="btn" href="https://www.sympla.com.br/evento/infame-6-years/3360116" target="_blank" rel="noopener">
@@ -1235,7 +1250,7 @@
 ============================================================ -->
 <div class="sticky-cta" id="stickyCta">
   <a class="btn" href="https://www.sympla.com.br/evento/infame-6-years/3360116" target="_blank" rel="noopener">
-    <span class="sticky-cta__meta">≠ INFAME 6 YEARS · SYMPLA</span>
+    <span class="sticky-cta__meta"><img class="neq-img neq-img--mono" src="assets/img/neq/neq-white.png" alt="≠"> INFAME 6 YEARS · SYMPLA</span>
     <span class="btn-row">
       <span>GARANTIR LUGAR</span>
       <span class="btn__arrow">→</span>
