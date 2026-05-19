@@ -342,7 +342,7 @@
     height: auto;
     align-self: center;
     margin: 0 auto auto;
-    padding: 0 0 20px;
+    padding: 0;
     pointer-events: none;
   }
 
@@ -496,9 +496,14 @@
   .countdown {
     display: flex;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 6px;
-    margin: 22px 0 26px;
+    width: 100%;
+    max-width: var(--max-w);
+    margin: 0 auto auto;
+    padding: 0 var(--gutter);
+    align-self: stretch;
+    box-sizing: border-box;
   }
   .countdown__unit {
     display: flex;
@@ -1035,17 +1040,17 @@
   </nav>
   <img class="hero__logo" src="assets/logo/logo-white-trim.png" alt="INFAME" loading="eager" fetchpriority="high">
 
-  <div class="hero__content">
-    <div class="countdown" id="countdown" aria-live="polite" aria-label="Contagem regressiva para 30 de maio de 2026">
-      <div class="countdown__unit"><span class="countdown__num" data-cd="d">--</span><span class="countdown__lbl">DIAS</span></div>
-      <span class="countdown__sep" aria-hidden="true">:</span>
-      <div class="countdown__unit"><span class="countdown__num" data-cd="h">--</span><span class="countdown__lbl">HRS</span></div>
-      <span class="countdown__sep" aria-hidden="true">:</span>
-      <div class="countdown__unit"><span class="countdown__num" data-cd="m">--</span><span class="countdown__lbl">MIN</span></div>
-      <span class="countdown__sep" aria-hidden="true">:</span>
-      <div class="countdown__unit"><span class="countdown__num" data-cd="s">--</span><span class="countdown__lbl">SEG</span></div>
-    </div>
+  <div class="countdown" id="countdown" aria-live="polite" aria-label="Contagem regressiva para 30 de maio de 2026">
+    <div class="countdown__unit"><span class="countdown__num" data-cd="d">--</span><span class="countdown__lbl">DIAS</span></div>
+    <span class="countdown__sep" aria-hidden="true">:</span>
+    <div class="countdown__unit"><span class="countdown__num" data-cd="h">--</span><span class="countdown__lbl">HRS</span></div>
+    <span class="countdown__sep" aria-hidden="true">:</span>
+    <div class="countdown__unit"><span class="countdown__num" data-cd="m">--</span><span class="countdown__lbl">MIN</span></div>
+    <span class="countdown__sep" aria-hidden="true">:</span>
+    <div class="countdown__unit"><span class="countdown__num" data-cd="s">--</span><span class="countdown__lbl">SEG</span></div>
+  </div>
 
+  <div class="hero__content">
     <div class="hero__eyebrow">
       <span class="pulse"></span>
       <span>A VIDA NÃO ESPERA</span>
