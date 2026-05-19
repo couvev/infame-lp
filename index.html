@@ -491,6 +491,56 @@
   }
 
   /* ============================================================
+     COUNTDOWN — event date timer
+     ============================================================ */
+  .countdown {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 6px;
+    margin: 22px 0 26px;
+  }
+  .countdown__unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+    flex: 1;
+    max-width: 80px;
+  }
+  .countdown__num {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(34px, 11vw, 56px);
+    line-height: 1;
+    color: var(--infame-white);
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  .countdown__lbl {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-top: 8px;
+  }
+  .countdown__sep {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(28px, 9vw, 48px);
+    line-height: 1;
+    color: rgba(255,255,255,0.5);
+    align-self: flex-start;
+    margin-top: 2px;
+  }
+  @media (min-width: 720px) {
+    .countdown { gap: 14px; max-width: 520px; }
+    .countdown__unit { max-width: 110px; }
+    .countdown__lbl { font-size: 10px; }
+  }
+
+  /* ============================================================
      SCROLL HINT
      ============================================================ */
   .scroll-hint {
@@ -1004,6 +1054,16 @@
       <span>+18</span>
     </div>
 
+    <div class="countdown" id="countdown" aria-live="polite" aria-label="Contagem regressiva para 30 de maio de 2026">
+      <div class="countdown__unit"><span class="countdown__num" data-cd="d">--</span><span class="countdown__lbl">DIAS</span></div>
+      <span class="countdown__sep" aria-hidden="true">:</span>
+      <div class="countdown__unit"><span class="countdown__num" data-cd="h">--</span><span class="countdown__lbl">HRS</span></div>
+      <span class="countdown__sep" aria-hidden="true">:</span>
+      <div class="countdown__unit"><span class="countdown__num" data-cd="m">--</span><span class="countdown__lbl">MIN</span></div>
+      <span class="countdown__sep" aria-hidden="true">:</span>
+      <div class="countdown__unit"><span class="countdown__num" data-cd="s">--</span><span class="countdown__lbl">SEG</span></div>
+    </div>
+
     <div class="hero__cta-row">
       <a class="btn" href="https://www.instagram.com/sejainfame/" target="_blank" rel="noopener">
         <span>FAZER PARTE DISSO</span>
@@ -1255,6 +1315,33 @@
       });
     }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
     els.forEach(function (el) { io.observe(el); });
+  })();
+
+  // -------------------------------------------------------------
+  // Countdown to event: 30 May 2026, 22:00 BRT (UTC-3)
+  // -------------------------------------------------------------
+  (function setupCountdown() {
+    var target = new Date('2026-05-30T22:00:00-03:00').getTime();
+    var elD = document.querySelector('[data-cd="d"]');
+    var elH = document.querySelector('[data-cd="h"]');
+    var elM = document.querySelector('[data-cd="m"]');
+    var elS = document.querySelector('[data-cd="s"]');
+    if (!elD || !elH || !elM || !elS) return;
+    function pad(n) { return n < 10 ? '0' + n : '' + n; }
+    function tick() {
+      var diff = target - Date.now();
+      if (diff < 0) diff = 0;
+      var d = Math.floor(diff / 86400000);
+      var h = Math.floor((diff % 86400000) / 3600000);
+      var m = Math.floor((diff % 3600000) / 60000);
+      var s = Math.floor((diff % 60000) / 1000);
+      elD.textContent = pad(d);
+      elH.textContent = pad(h);
+      elM.textContent = pad(m);
+      elS.textContent = pad(s);
+    }
+    tick();
+    setInterval(tick, 1000);
   })();
 
   // -------------------------------------------------------------
